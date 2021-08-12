@@ -10,7 +10,7 @@ class Tipos extends Model
     use HasFactory;
 
     protected $fillable = ['descricao'];
-    protected $primaryKey = 'id_tipo';
+    protected $primaryKey = 'id';
     protected $table = "tipos";
 
     public function Tipos(Tipos $tip){

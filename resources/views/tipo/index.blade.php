@@ -21,13 +21,13 @@
                                 @foreach($tipos as $tipo)
                                 <tr>
                                 
-                                    <td>{{$tipo->id_tipo}}</td>
+                                    <td>{{$tipo->id}}</td>
                                     <td>{{$tipo->descricao}}</td>
                                    
                                     <td>
-                                        <a href="#"class="btn btn-info">Visualizar</a>
-                                        <a href="#"class="btn btn-warning">Editar</a>
-                                        <a href="#"class="btn btn-danger">Excluir</a>
+                                        
+                                        <a href="{{route('tipo.editar',$tipo->id)}}"class="btn btn-warning">Editar</a>
+                                        <a href="javascript: if(confirm('Realmente deseja deletar?')) { window.location.href = '{{ route ('tipo.deletar',$tipo->id)}}'}"class="btn btn-danger">Excluir</a>
                                         
                                         
                                     </td>
@@ -35,7 +35,23 @@
                                 @endforeach
                             </tbody>
                         </table>
+
+                        <a href="{{route('tipo.adicionar')}}" class="btn btn-primary pull-left">Adicionar</a>
                 </div>
+
+                @if(Session::has('flash_message'))
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div  class="alert {{Session::get('flash_message')['class']}} text-center">
+                                {{Session::get('flash_message')['msg']}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+
+
             </div>
         </div>
     </div>

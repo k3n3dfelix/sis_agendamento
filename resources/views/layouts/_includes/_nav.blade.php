@@ -11,7 +11,12 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
 
+                    <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('tipo') }}">{{ __('Tipos Usuários') }}</a>
+                    </li>
                     </ul>
+                    
+                    
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
