@@ -35,6 +35,6 @@ Route::get('/usuario', [App\Http\Controllers\UsuarioController::class, 'index'])
 Route::get('/usuario/adicionar', [App\Http\Controllers\UsuarioController::class, 'adicionar'])->name('usuario.adicionar');
 Route::post('/usuario/salvar', [App\Http\Controllers\UsuarioController::class, 'salvar'])->name('usuario/salvar');
 Route::post('/usuario/salvar', [App\Http\Controllers\UsuarioController::class, 'salvar'])->name('usuario.salvar');
-Route::get('/usuario/editar/{id}', [App\Http\Controllers\UsuarioController::class, 'editar'])->name('usuario.editar');
+Route::get('/usuario/editar/{id_usuario}', [App\Http\Controllers\UsuarioController::class, 'editar'])->name('usuario.editar');
 Route::put('/usuario/atualizar/{id}', [App\Http\Controllers\UsuarioController::class, 'atualizar'])->name('usuario.atualizar');
 Route::get('/usuario/deletar/{id}', [App\Http\Controllers\UsuarioController::class, 'deletar'])->name('usuario.deletar');

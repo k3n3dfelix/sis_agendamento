@@ -10,12 +10,12 @@ class Usuarios extends Model
     use HasFactory;
 
     protected $fillable = ['descricao','tipo_id','nome','sobrenome','login','senha'];
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'id_usuario';
 
-    protected $table = "tipos";
+    //protected $table = "tipos";
 
     public function tipos()
     {
-        return $this->belongsTo('App\Models\Tipos');
+        return $this->belongsTo('App\Models\Tipos', 'tipo_id');
     }
 }

@@ -12,13 +12,13 @@ class Tipos extends Model
     protected $fillable = ['descricao'];
     protected $primaryKey = 'id';
     
-    protected $table = "tipos";
+    protected $table = "usuarios";
 
     public function Tipos(Tipos $tip){
         return $this->tipo->save($tip);
     }
     public function usuarios(){
-        return $this->hasOne('App\Models\Usuarios');
+        return $this->hasMany('App\Models\Usuarios', 'tipo_id');
     }
 
 }

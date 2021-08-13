@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Usuarios;
+use App\Models\Tipos;
 
 class UsuarioController extends Controller
 {
@@ -34,9 +35,10 @@ class UsuarioController extends Controller
 
     public function adicionar(){
         
+        $tipos = DB::table('tipos')->paginate(10);;
+        //dd($tipos);
       
-      
-        return view('usuario.adicionar');
+        return view('usuario.adicionar',compact('tipos'));
     }
 
     public function salvar(Request $request){
@@ -55,8 +57,9 @@ class UsuarioController extends Controller
     public function editar($id){
         
         $usuarios = Usuarios::find($id);
+        $tipos = DB::table('tipos')->paginate(10);;
         
-        return view('usuario.editar', compact('usuarios'));
+        return view('usuario.editar', compact('usuarios','tipos'));
       
        
     }
@@ -74,7 +77,7 @@ class UsuarioController extends Controller
             'class'=>"alert-success"
         ]);
 
-        return redirect()->route('tipo');
+        return redirect()->route('usuario');
       
        
     }

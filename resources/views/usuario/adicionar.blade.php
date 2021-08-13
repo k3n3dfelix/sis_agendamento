@@ -16,13 +16,21 @@
                     <form action="{{route('usuario.salvar')}}" method="post">
                         {{csrf_field()}}
                         <div class="form-row">
-                            <div class="form-group col-md-12 ">
+                            <!-- <div class="form-group col-md-12 ">
                                 <label for="descricao">Descrição</label>
                                 <input type="text" class="form-control" id="descricao" name="descricao">
                             </div>
                             <div class="form-group col-md-12 ">
                                 <label for="id_tipo_usuario">Tipo Usuário</label>
                                 <input type="text" class="form-control" id="id_tipo_usuario" name="id_tipo_usuario">
+                            </div> -->
+                            <div class="form-group col-md-12 ">
+                            <label for="nome">Tipo</label>
+                            <select class="form-control" name="tipo_id">
+                                @foreach($tipos as $tipo)
+                                    <option value="{{$tipo->id}}"> {{$tipo->descricao}}</option>
+                                @endforeach
+                            </select>
                             </div>
                             <div class="form-group col-md-12 ">
                                 <label for="nome">Nome</label>

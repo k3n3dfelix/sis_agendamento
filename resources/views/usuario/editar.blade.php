@@ -13,13 +13,18 @@
                 </ol>
 
                 <div class="card-body">
-                    <form action="{{route('usuario.atualizar',$usuarios->id)}}" method="post">
+                    <form action="{{route('usuario.atualizar',$usuarios->id_usuario)}}" method="post">
                         {{csrf_field()}}
                         @method('PUT')
                         <div class="form-row">
-                            <div class="form-group col-md-12 ">
-                                <label for="descricao">Descrição</label>
-                                <input type="text" class="form-control" id="descricao" name="descricao" value="{{ isset($usuarios->descricao) ? $usuarios->descricao : ''}}">
+                        <div class="form-group col-md-12 ">
+                            <label for="nome">Tipo</label>
+                            <select class="form-control" name="tipo_id">
+                                @foreach($tipos as $tipo)
+                                    <option value="{{$tipo->id}}" {{(isset($usuarios->tipo_id) && $usuarios->tipo_id == $tipo->id ? 'selected' : '')}} 
+                                    > {{$tipo->descricao}}</option>
+                                @endforeach
+                            </select>
                             </div>
                             <div class="form-group col-md-12 ">
                                 <label for="tipo_id">Tipo Usuário</label>

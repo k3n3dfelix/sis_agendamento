@@ -37,6 +37,10 @@
                         </table>
 
                         <a href="{{route('tipo.adicionar')}}" class="btn btn-primary pull-left">Adicionar</a>
+                        <div style="margin-top:10px;text-align: center ! important;"class="pull-right">
+                            {!! $tipos->links()!!}
+                        </div>
+                        
                 </div>
 
                 @if(Session::has('flash_message'))

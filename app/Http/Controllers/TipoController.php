@@ -25,7 +25,7 @@ class TipoController extends Controller
      */
     public function index()
     {   
-        $tipos = DB::table('tipos')->paginate(10);;
+        $tipos = DB::table('tipos')->paginate(5);;
         return view('tipo.index',compact('tipos'));
 
        
