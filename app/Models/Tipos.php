@@ -11,6 +11,7 @@ class Tipos extends Model
 
     protected $fillable = ['descricao'];
     protected $primaryKey = 'id';
+    
     protected $table = "tipos";
 
     public function Tipos(Tipos $tip){
