@@ -10,10 +10,12 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
-                    <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('tipo') }}">{{ __('Tipos Usuários') }}</a>
-                    </li>
+                        <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('usuario') }}">{{ __('Usuários') }}</a>
+                        </li>
+                        <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('tipo') }}">{{ __('Tipos Usuários') }}</a>
+                        </li>
                     </ul>
                     
                     

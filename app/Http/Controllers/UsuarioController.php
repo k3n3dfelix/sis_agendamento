@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Usuarios;
 use App\Models\Tipos;
 
-class TipoController extends Controller
+class UsuarioController extends Controller
 {
-     /**
+    /**
      * Create a new controller instance.
      *
      * @return void
@@ -25,65 +26,68 @@ class TipoController extends Controller
      */
     public function index()
     {   
-        $tipos = DB::table('tipos')->paginate(5);;
-        return view('tipo.index',compact('tipos'));
+        $usuarios = DB::table('usuarios')->paginate(10);;
+        
+        return view('usuario.index',compact('usuarios'));
 
        
     }
 
     public function adicionar(){
         
+        $tipos = DB::table('tipos')->paginate(10);;
+        //dd($tipos);
       
-      
-        return view('tipo.adicionar');
+        return view('usuario.adicionar',compact('tipos'));
     }
 
     public function salvar(Request $request){
         
         $dados = $request->all();
-        $tipos = Tipos::create($dados);
+        $usuarios = Usuarios::create($dados);
          \Session::flash('flash_message',[
             'msg'=>"Registro adicionado com sucesso!",
             'class'=>"alert-success"
         ]);
-        return redirect()->route('tipo.adicionar');
+        return redirect()->route('usuario.adicionar');
       
        
     }
 
     public function editar($id){
         
-        $tipos = Tipos::find($id);
+        $usuarios = Usuarios::find($id);
+        $tipos = DB::table('tipos')->paginate(10);;
         
-        return view('tipo.editar', compact('tipos'));
+        return view('usuario.editar', compact('usuarios','tipos'));
       
        
     }
 
     public function atualizar(Request $request, $id){
         
-        $tipos = Tipos::find($id);
+        $usuarios = Usuarios::find($id);
       
         $dados = $request->all();
        
-       $tipos->update($dados);
+       $usuarios->update($dados);
 
         \Session::flash('flash_message',[
             'msg'=>"Registro atualizado com sucesso!",
             'class'=>"alert-success"
         ]);
 
-        return redirect()->route('tipo');
+        return redirect()->route('usuario');
       
        
     }
 
     public function deletar($id){
-        Tipos::find($id)->delete();
+        Usuarios::find($id)->delete();
 
         \Session::flash('flash_message',[
             'msg'=>"Registro excluido com sucesso!",
             'class'=>"alert-success"
-        ]);        return redirect()->route('tipo');
+        ]);        return redirect()->route('usuario');
     }
 }

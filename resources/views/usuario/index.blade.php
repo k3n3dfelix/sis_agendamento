@@ -5,29 +5,35 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Listagem Tipos Usuários') }}</div>
+                <div class="card-header">{{ __('Listagem  Usuários') }}</div>
 
                 <div class="card-body">
                     <table class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Descrição</th>
+                                    <th>Tipo Usuário</th>
+                                    <th>Nome</th>
+                                    <th>Sobrenome</th>
+                                    <th>Login</th>
+                                   
                                     <th>Opções</th>
                                  
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($tipos as $tipo)
+                                @foreach($usuarios as $usuario)
                                 <tr>
                                 
-                                    <td>{{$tipo->id}}</td>
-                                    <td>{{$tipo->descricao}}</td>
-                                   
+                                    <td>{{$usuario->id_usuario}}</td>
+                                    <td>{{$usuario->tipo_id}}</td>
+                                    <td>{{$usuario->nome}}</td>
+                                    <td>{{$usuario->sobrenome}}</td>
+                                    <td>{{$usuario->login}}</td>
                                     <td>
                                         
-                                        <a href="{{route('tipo.editar',$tipo->id)}}"class="btn btn-warning">Editar</a>
-                                        <a href="javascript: if(confirm('Realmente deseja deletar?')) { window.location.href = '{{ route ('tipo.deletar',$tipo->id)}}'}"class="btn btn-danger">Excluir</a>
+                                        <a href="{{route('usuario.editar',$usuario->id_usuario)}}"class="btn btn-warning">Editar</a>
+                                        <a href="javascript: if(confirm('Realmente deseja deletar?')) { window.location.href = '{{ route ('usuario.deletar',$usuario->id_usuario)}}'}"class="btn btn-danger">Excluir</a>
                                         
                                         
                                     </td>
@@ -36,11 +42,7 @@
                             </tbody>
                         </table>
 
-                        <a href="{{route('tipo.adicionar')}}" class="btn btn-primary pull-left">Adicionar</a>
-                        <div style="margin-top:10px;text-align: center ! important;"class="pull-right">
-                            {!! $tipos->links()!!}
-                        </div>
-                        
+                        <a href="{{route('usuario.adicionar')}}" class="btn btn-primary pull-left">Adicionar</a>
                 </div>
 
                 @if(Session::has('flash_message'))
