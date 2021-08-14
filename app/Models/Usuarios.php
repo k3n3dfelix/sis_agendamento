@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-//use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class Usuarios extends Model
@@ -14,7 +14,7 @@ class Usuarios extends Model
     use HasFactory;
 
     protected $fillable = ['descricao','tipo_id','nome','sobrenome','login','senha'];
-    protected $primaryKey = 'id_usuario';
+    protected $primaryKey = 'id';
 
     //protected $table = "tipos";
     //protected $table = "aulas";

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 use App\Models\Usuarios;
 
@@ -45,10 +47,11 @@ class AutenticacaoController extends Controller
         if(Auth::check() || ($usuario && Hash::check($senha,$usuario->senha))){
            
         $_SESSION = $usuario;  
-        //dd($usuario);
-        Auth::logindo($_SESSION,TRUE);;
-        $data = $request->session()->all();
-        dd($data);
+       //dd($_SESSION);
+        //$usuario = Usuarios::find($id);
+        
+        //$user = Auth::login($usuario);
+        
             return view('paineladm');
         }else{
             return redirect()->route('login');  
