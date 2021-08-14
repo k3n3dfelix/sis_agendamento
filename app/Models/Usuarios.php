@@ -9,12 +9,12 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class Usuarios extends Model
+class Usuarios extends Authenticatable
 {
     use HasFactory;
 
     protected $fillable = ['descricao','tipo_id','nome','sobrenome','login','senha'];
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'id_usuario';
 
     //protected $table = "tipos";
     //protected $table = "aulas";

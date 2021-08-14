@@ -24,11 +24,11 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            @if ($_SESSION->id === '')
+                          
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
-                            @endif
+                            
 
                             @if (Auth::check())
                                 <li class="nav-item">
