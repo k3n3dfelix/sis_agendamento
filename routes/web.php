@@ -38,3 +38,12 @@ Route::post('/usuario/salvar', [App\Http\Controllers\UsuarioController::class, '
 Route::get('/usuario/editar/{id_usuario}', [App\Http\Controllers\UsuarioController::class, 'editar'])->name('usuario.editar');
 Route::put('/usuario/atualizar/{id}', [App\Http\Controllers\UsuarioController::class, 'atualizar'])->name('usuario.atualizar');
 Route::get('/usuario/deletar/{id}', [App\Http\Controllers\UsuarioController::class, 'deletar'])->name('usuario.deletar');
+
+//Rotas Aulas---------------------------------------------------------------------------------------------
+Route::get('/aula', [App\Http\Controllers\AulaController::class, 'index'])->name('aula');
+Route::get('/aula/adicionar', [App\Http\Controllers\AulaController::class, 'adicionar'])->name('aula.adicionar');
+Route::post('/aula/salvar', [App\Http\Controllers\AulaController::class, 'salvar'])->name('aula/salvar');
+Route::post('/aula/salvar', [App\Http\Controllers\AulaController::class, 'salvar'])->name('aula.salvar');
+Route::get('/aula/editar/{id}', [App\Http\Controllers\AulaController::class, 'editar'])->name('aula.editar');
+Route::put('/aula/atualizar/{id}', [App\Http\Controllers\AulaController::class, 'atualizar'])->name('aula.atualizar');
+Route::get('/aula/deletar/{id}', [App\Http\Controllers\AulaController::class, 'deletar'])->name('aula.deletar');

@@ -8,16 +8,32 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                @guest
+                    @if (Route::has('login'))
+                                
+                    @endif
+                    @else
                     <!-- Left Side Of Navbar -->
+                    
                     <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                                            <a class="nav-link" href="#">{{ __('Agenda') }}</a>
+                            </li>
+                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('aula') }}">{{ __('Aulas') }}</a>
+                        </li>
                         <li class="nav-item">
                                         <a class="nav-link" href="{{ route('usuario') }}">{{ __('Usuários') }}</a>
                         </li>
                         <li class="nav-item">
                                         <a class="nav-link" href="{{ route('tipo') }}">{{ __('Tipos Usuários') }}</a>
                         </li>
+                        <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Users') }}</a>
+                         </li>
+
                     </ul>
-                    
+                    @endguest
                     
 
                     <!-- Right Side Of Navbar -->
