@@ -5,6 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+//use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+
 class Usuarios extends Model
 {
     use HasFactory;
@@ -13,9 +17,14 @@ class Usuarios extends Model
     protected $primaryKey = 'id_usuario';
 
     //protected $table = "tipos";
+    //protected $table = "aulas";
 
     public function tipos()
     {
         return $this->belongsTo('App\Models\Tipos', 'tipo_id');
+    }
+
+    public function aulas(){
+        return $this->hasMany('App\Models\Aulas', 'usuario_id');
     }
 }

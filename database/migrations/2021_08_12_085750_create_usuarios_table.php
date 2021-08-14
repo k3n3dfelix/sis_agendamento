@@ -20,6 +20,7 @@ class CreateUsuariosTable extends Migration
             $table->string('sobrenome');
             $table->string('login')->unique();;
             $table->string('senha');
+            $table->rememberToken();
             $table->timestamps();
             $table->foreign('tipo_id')->references('id')->on('tipos')->onDelete('cascade');
         });

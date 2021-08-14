@@ -44,6 +44,7 @@ class UsuarioController extends Controller
     public function salvar(Request $request){
         
         $dados = $request->all();
+        $dados['senha'] = bcrypt($dados['senha']);
         $usuarios = Usuarios::create($dados);
          \Session::flash('flash_message',[
             'msg'=>"Registro adicionado com sucesso!",

@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('content')
@@ -14,7 +15,7 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('Voce esta no painel ADM') }}
                 </div>
             </div>
         </div>

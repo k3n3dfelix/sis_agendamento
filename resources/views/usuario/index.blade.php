@@ -25,15 +25,12 @@
                                 @foreach($usuarios as $usuario)
                                 <tr>
                                 
-                                    <td>{{$usuario->id_usuario}}</td>
+                                    <td>{{$usuario->id}}</td>
                                     <td>{{$usuario->tipo_id}}</td>
                                     <td>{{$usuario->nome}}</td>
-                                    <td>{{$usuario->sobrenome}}</td>
-                                    <td>{{$usuario->login}}</td>
-                                    <td>
-                                        
-                                        <a href="{{route('usuario.editar',$usuario->id_usuario)}}"class="btn btn-warning">Editar</a>
-                                        <a href="javascript: if(confirm('Realmente deseja deletar?')) { window.location.href = '{{ route ('usuario.deletar',$usuario->id_usuario)}}'}"class="btn btn-danger">Excluir</a>
+                                    <td>{{$usuario->sobrenome}}</t••••••••
+                                        <a href="{{route('usuario.editar',$usuario->id)}}"class="btn btn-warning">Editar</a>
+                                        <a href="javascript: if(confirm('Realmente deseja deletar?')) { window.location.href = '{{ route ('usuario.deletar',$usuario->id)}}'}"class="btn btn-danger">Excluir</a>
                                         
                                         
                                     </td>

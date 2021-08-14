@@ -13,13 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
+Auth::routes();
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//Rotas Login Personalizado---------------------------------------------------------------------------------------
+Route::get('/admin', [App\Http\Controllers\AutenticacaoController::class, 'index'])->name('admin');
+Route::get('/login', [App\Http\Controllers\AutenticacaoController::class, 'login'])->name('login');
+Route::post('/logindo', [App\Http\Controllers\AutenticacaoController::class, 'logindo'])->name('logindo');
+Route::post('/logout', [App\Http\Controllers\AutenticacaoController::class, 'logout'])->name('logout');
 
 //Rotas Tipo Usuários---------------------------------------------------------------------------------------------
 Route::get('/tipo', [App\Http\Controllers\TipoController::class, 'index'])->name('tipo');
