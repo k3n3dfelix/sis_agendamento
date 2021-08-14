@@ -5,21 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Aulas extends Model
+class Agenda extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['usuario_id','materia','data','hora',];
+    protected $fillable = ['aula_id','usuario_id','status'];
     protected $primaryKey = 'id_agenda';
-
-    //protected $table = "tipos";
 
     public function usuarios()
     {
         return $this->belongsTo('App\Models\Usuarios', 'usuario_id');
     }
-
-    public function agendas(){
-        return $this->hasMany('App\Models\Agenda', 'aula_id');
+    public function aulas()
+    {
+        return $this->belongsTo('App\Models\Aulas', 'aula_id');
     }
 }
