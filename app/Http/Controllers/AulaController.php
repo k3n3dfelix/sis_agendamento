@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Aulas;
 use App\Models\Usuarios;
+use App\Models\Agenda;
 
 class AulaController extends Controller
 {

@@ -23,10 +23,14 @@ class AgendaController extends Controller
 
     public function adicionar(){
         
-       
-        
-      
         return view('agenda.adicionar');
+    }
+
+    public function agendar($id){
+        
+        $aulas = Aulas::find($id);
+        
+        return view('agenda.agendarconf',compact('aulas'));
     }
 
     public function salvar(Request $request){

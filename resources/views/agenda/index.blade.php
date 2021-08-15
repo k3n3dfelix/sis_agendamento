@@ -23,18 +23,23 @@
                             </thead>
                             <tbody>
                                 @foreach($agendas as $agenda)
+                               
+                                
                                 <tr>
                                 
                                     <td>{{$agenda->id_agenda}}</td>
                                     <td>{{$agenda->aula_id}}</td>
                                     <td>{{$agenda->usuario_id}}</td>
-                                    <td>{{$agenda->status}}</td>
+                                    <td>{{($agenda->status == 1 ? 'Aguardando Aprovação' : '')}}
+                                        {{($agenda->status == 2 ? 'Aprovado' : '')}}
+                                        {{($agenda->status == 3 ? 'Cancelado Professor' : '')}}
+                                        {{($agenda->status == 4 ? 'Cancelado Aluno' : '')}}
+                                    </td>
                                     <td>
                                       
                                     <a href="{{route('agenda.editar',$agenda->id_agenda)}}"class="btn btn-primary">Visualizar Alunos</a>
-                                        <a href="{{route('agenda.editar',$agenda->id_agenda)}}"class="btn btn-success">Confirmar Agendamento</a>
-                                        <a href="{{route('agenda.editar',$agenda->id_agenda)}}"class="btn btn-warning">Editar</a>
-                                        <a href="javascript: if(confirm('Realmente deseja deletar?')) { window.location.href = '{{ route ('agenda.deletar',$agenda->id_agenda)}}'}"class="btn btn-danger">Cancelar Agendamento</a>
+                                    <a href="{{route('agenda.editar',$agenda->id_agenda)}}"class="btn btn-success">Confirmar Agendamento</a>
+                                    <a href="javascript: if(confirm('Realmente deseja deletar?')) { window.location.href = '{{ route ('agenda.deletar',$agenda->id_agenda)}}'}"class="btn btn-danger">Cancelar Agendamento</a>
                                         
                                         
                                     </td>

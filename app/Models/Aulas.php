@@ -10,7 +10,7 @@ class Aulas extends Model
     use HasFactory;
 
     protected $fillable = ['usuario_id','materia','data','hora',];
-    protected $primaryKey = 'id_agenda';
+    protected $primaryKey = 'id_aula';
 
     //protected $table = "tipos";
 
