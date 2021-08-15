@@ -37,21 +37,32 @@ class AutenticacaoController extends Controller
 
     public function logindo(Request $request){
 
-        $dados = $request->all();
+        $credentials = $request->validate([
+            'login' => ['required'],
+            'password' => ['required'],
+        ]);
+
+       
+        /*$dados = $request->all();
         
         $login = $dados['email'];
         $senha = $dados['password'];
         
-        $usuario = Usuarios::where('login',$login)->first();
+        $usuario = Usuarios::where('login',$login)->first(); */
 
-        if(Auth::check() || ($usuario && Hash::check($senha,$usuario->senha))){
-           
-        $_SESSION = $usuario;  
-        $id= $_SESSION->id;
-        $usuario = Usuarios::find($id);
-        $user = Auth::login($usuario);
-        
-            return view('paineladm');
+        //if(Auth::check() || ($usuario && Hash::check($senha,$usuario->senha)))
+        //if(Auth::attempt($request->only("email","password")))
+        if(Auth::attempt($credentials))
+        {
+            $request->session()->regenerate();
+            dd($request);
+       // $_SESSION = $usuario;  
+       // dd($_SESSION);
+        //$id= $_SESSION->id;
+        //$usuario = Usuarios::find($id);
+        //$user = Auth::login($usuario);
+        return redirect()->intended('paineladm');
+           // return view('paineladm');
         }else{
             return redirect()->route('login');  
         }
