@@ -28,9 +28,6 @@
                         <li class="nav-item">
                                         <a class="nav-link" href="{{ route('tipo') }}">{{ __('Tipos Usuários') }}</a>
                         </li>
-                        <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Users') }}</a>
-                         </li>
 
                     </ul>
                     @endguest
