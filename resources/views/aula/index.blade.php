@@ -32,7 +32,7 @@
                                     <td>{{$aula->hora}}</td>
                                     <td>
                                         <a href="{{route('aula.editar',$aula->id_aula)}}"class="btn btn-primary">Visualizar Alunos</a>
-                                        <a href="{{route('aula.editar',$aula->id_aula)}}"class="btn btn-success">Agendar</a>
+                                        <a href="{{route('agenda.agendar',$aula->id_aula)}}"class="btn btn-success">Agendar</a>
                                         <a href="{{route('aula.editar',$aula->id_aula)}}"class="btn btn-warning">Editar</a>
                                         <a href="javascript: if(confirm('Realmente deseja deletar?')) { window.location.href = '{{ route ('aula.deletar',$aula->id_aula)}}'}"class="btn btn-danger">Excluir</a>
                                         
