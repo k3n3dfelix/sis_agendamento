@@ -24,6 +24,7 @@ Route::get('/', function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //Rotas Login Personalizado---------------------------------------------------------------------------------------
+Route::get('/paineladm', [App\Http\Controllers\AutenticacaoController::class, 'index'])->name('paineladm');
 Route::get('/admin', [App\Http\Controllers\AutenticacaoController::class, 'index'])->name('admin');
 Route::get('/login', [App\Http\Controllers\AutenticacaoController::class, 'login'])->name('login');
 Route::post('/logindo', [App\Http\Controllers\AutenticacaoController::class, 'logindo'])->name('logindo');
