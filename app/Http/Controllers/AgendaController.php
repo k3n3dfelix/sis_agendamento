@@ -8,72 +8,78 @@ use App\Models\Aulas;
 use App\Models\Usuarios;
 use App\Models\Agenda;
 
-class AulaController extends Controller
+
+
+class AgendaController extends Controller
 {
     public function index()
     {   
-        $aulas = DB::table('aulas')->paginate(10);;
+        $agendas = DB::table('agendas')->paginate(10);;
         
-        return view('aula.index',compact('aulas'));
+        return view('agenda.index',compact('agendas'));
 
        
     }
 
     public function adicionar(){
         
-        $tipos = DB::table('tipos')->paginate(10);;
-        //dd($tipos);
-      
-        return view('aula.adicionar');
+        return view('agenda.adicionar');
+    }
+
+    public function agendar($id){
+        
+        $aulas = Aulas::find($id);
+        
+        return view('agenda.agendarconf',compact('aulas'));
     }
 
     public function salvar(Request $request){
         
         $dados = $request->all();
-        $aulas = Aulas::create($dados);
+        $agendas = Agenda::create($dados);
          \Session::flash('flash_message',[
             'msg'=>"Registro adicionado com sucesso!",
             'class'=>"alert-success"
         ]);
-        return redirect()->route('aula.adicionar');
+        return redirect()->route('agenda.adicionar');
       
        
     }
 
     public function editar($id){
         
-        $aulas = Aulas::find($id);
+        $agendas = Agenda::find($id);
         
         
-        return view('aula.editar', compact('aulas'));
+        return view('agenda.editar', compact('agendas'));
       
        
     }
 
     public function atualizar(Request $request, $id){
         
-        $aulas = Aulas::find($id);
+        $agendas = Agenda::find($id);
      
         $dados = $request->all();
        
-       $aulas->update($dados);
+       $agendas->update($dados);
 
         \Session::flash('flash_message',[
             'msg'=>"Registro atualizado com sucesso!",
             'class'=>"alert-success"
         ]);
 
-        return redirect()->route('aula');
+        return redirect()->route('agenda');
       
        
     }
 
     public function deletar($id){
-        Aulas::find($id)->delete();
+        Agenda::find($id)->delete();
 
         \Session::flash('flash_message',[
             'msg'=>"Registro excluido com sucesso!",
             'class'=>"alert-success"
-        ]);        return redirect()->route('aula');
+        ]);        return redirect()->route('agenda');
     }
 }
