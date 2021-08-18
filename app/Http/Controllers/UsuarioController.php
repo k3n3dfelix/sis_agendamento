@@ -35,6 +35,8 @@ class UsuarioController extends Controller
     }
 
     public function adicionar(){
+
+        $this->authorize('create',Usuarios::class);
         
         $tipos = DB::table('tipos')->paginate(10);;
         //dd($tipos);
@@ -43,6 +45,8 @@ class UsuarioController extends Controller
     }
 
     public function salvar(Request $request){
+
+        $this->authorize('create',Usuarios::class);
         
         $dados = $request->all();
         $dados['senha'] = bcrypt($dados['senha']);
@@ -57,6 +61,8 @@ class UsuarioController extends Controller
     }
 
     public function editar($id){
+
+        $this->authorize('update',Usuarios::class);
         
         $usuarios = Usuarios::find($id);
         $tipos = DB::table('tipos')->paginate(10);;
@@ -67,6 +73,8 @@ class UsuarioController extends Controller
     }
 
     public function atualizar(Request $request, $id){
+
+        $this->authorize('update',Usuarios::class);
         
         $usuarios = Usuarios::find($id);
       

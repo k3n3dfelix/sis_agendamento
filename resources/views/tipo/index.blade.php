@@ -25,10 +25,10 @@
                                     <td>{{$tipo->descricao}}</td>
                                    
                                     <td>
-                                        
+                                    @can('update',App\Models\Usuarios::class)
                                         <a href="{{route('tipo.editar',$tipo->id)}}"class="btn btn-warning">Editar</a>
                                         <a href="javascript: if(confirm('Realmente deseja deletar?')) { window.location.href = '{{ route ('tipo.deletar',$tipo->id)}}'}"class="btn btn-danger">Excluir</a>
-                                        
+                                    @endcan
                                         
                                     </td>
                                 </tr>

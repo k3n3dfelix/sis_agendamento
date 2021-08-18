@@ -17,7 +17,9 @@
                                     <th>Sobrenome</th>
                                     <th>Login</th>
                                    
+                                    @can('update',App\Models\Usuarios::class)
                                     <th>Opções</th>
+                                    @endcan
                                  
                                 </tr>
                             </thead>
@@ -30,18 +32,19 @@
                                     <td>{{$usuario->nome}}</td>
                                     <td>{{$usuario->sobrenome}}</td>
                                     <td>{{$usuario->login}}</td>
+                                    @can('update',App\Models\Tipos::class)
                                     <td>
                                         <a href="{{route('usuario.editar',$usuario->id_usuario)}}"class="btn btn-warning">Editar</a>
-                                        <a href="javascript: if(confirm('Realmente deseja deletar?')) { window.location.href = '{{ route ('usuario.deletar',$usuario->id_usuario)}}'}"class="btn btn-danger">Excluir</a>
-                                        
-                                        
+                                        <a href="javascript: if(confirm('Realmente deseja deletar?')) { window.location.href = '{{ route ('usuario.deletar',$usuario->id_usuario)}}'}"class="btn btn-danger">Excluir</a>   
                                     </td>
+                                    @endcan
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
-
+                        @can('create',App\Models\usuarios::class)
                         <a href="{{route('usuario.adicionar')}}" class="btn btn-primary pull-left">Adicionar</a>
+                        @endcan
                 </div>
 
                 @if(Session::has('flash_message'))

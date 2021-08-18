@@ -26,7 +26,7 @@
                             </div> -->
                             <div class="form-group col-md-12 ">
                                 <label for="nome">ID USUARIO</label>
-                                <input type="text" class="form-control" id="usuario_id" name="usuario_id" value="1">
+                                <input type="hidden" class="form-control" id="usuario_id" name="usuario_id" value="{{auth()->user()->usuario_id}}">
                             </div>
                             <div class="form-group col-md-12 ">
                                 <label for="nome">Materia</label>

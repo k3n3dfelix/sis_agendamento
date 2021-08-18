@@ -12,7 +12,25 @@ class AulaController extends Controller
 {
     public function index()
     {   
-        $aulas = DB::table('aulas')->paginate(10);;
+       
+        $aulas = DB::table('aulas')
+        ->join('usuarios', 'aulas.usuario_id', '=', 'usuarios.id_usuario')
+        
+        ->paginate(10);;
+        
+        return view('aula.index',compact('aulas'));
+
+       
+    }
+
+    public function professor()
+    {   
+        $id_usuario = auth()->user()->id_usuario;
+        
+        $aulas = DB::table('aulas')
+        ->join('usuarios', 'aulas.usuario_id', '=', 'usuarios.id_usuario')
+        ->where('usuario_id', $id_usuario)
+        ->paginate(10);;
         
         return view('aula.index',compact('aulas'));
 

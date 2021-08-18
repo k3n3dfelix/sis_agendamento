@@ -52,6 +52,8 @@ class TipoController extends Controller
     }
 
     public function editar($id){
+
+        $this->authorize('update',Tipos::class);
         
         $tipos = Tipos::find($id);
         

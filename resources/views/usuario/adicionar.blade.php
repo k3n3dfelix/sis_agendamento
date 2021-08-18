@@ -8,7 +8,7 @@
                 <!--<div class="card-header">{{ __('Adicionar Tipo Usuário') }}</div> -->
                 
                 <ol class="breadcrumb card-header ">
-                    <li class="breadcrumb-item "><a href="{{ route('tipo') }}"> Usuários</a></li>
+                    <li class="breadcrumb-item "><a href="{{ route('usuario') }}"> Usuários</a></li>
                     <li class="breadcrumb-item active">Adicionar</li>
                 </ol>
 

@@ -22,12 +22,16 @@
                         <li class="nav-item">
                                             <a class="nav-link" href="{{ route('aula') }}">{{ __('Aulas') }}</a>
                         </li>
+                        @can('vermenu',App\Models\Tipos::class)
                         <li class="nav-item">
                                         <a class="nav-link" href="{{ route('usuario') }}">{{ __('Usuários') }}</a>
                         </li>
+                        @endcan
+                        @can('vermenu',App\Models\Tipos::class)
                         <li class="nav-item">
                                         <a class="nav-link" href="{{ route('tipo') }}">{{ __('Tipos Usuários') }}</a>
                         </li>
+                        @endcan
 
                     </ul>
                     @endguest

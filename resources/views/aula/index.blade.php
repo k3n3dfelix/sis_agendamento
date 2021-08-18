@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Listagem  Aulas') }}</div>
+                <div class="card-header text-center">{{ __('Listagem  Aulas') }}</div>
                 <!-- @dump(auth()->user()->tipo_id)
                 @php 
                     $id = auth()->user()->tipo_id;
@@ -30,21 +30,25 @@
                                 <tr>
                                 
                                     <td>{{$aula->id_aula}}</td>
-                                    <td>{{$aula->usuario_id}}</td>
+                                    <td>{{$aula->nome}}</td>
                                     <td>{{$aula->materia}}</td>
                                     <td>{{$aula->data}}</td>
                                     <td>{{$aula->hora}}</td>
                                     <td>
-                                    @guest
-                    @if($id === '1')
-                    echo <a href="{{route('aula.editar',$aula->id_aula)}}"class="btn btn-primary">Visualizar Alunos</a>  
-                    @endif
-                    @else
-                    <a href="{{route('agenda.agendar',$aula->id_aula)}}"class="btn btn-success">Agendar</a>
+                                  
+                                    @can('vermenu',App\Models\Aulas::class)
+                                        <a href="{{route('aula.editar',$aula->id_aula)}}"class="btn btn-primary">Visualizar Alunos</a>  
+                                    @endcan
+                                    @can('viewbtnAgendar',App\Models\Aulas::class)
+                                        <a href="{{route('agenda.agendar',$aula->id_aula)}}"class="btn btn-success">Agendar</a>
+                                    @endcan
+                                    @can('update',App\Models\Aulas::class)
                                         <a href="{{route('aula.editar',$aula->id_aula)}}"class="btn btn-warning">Editar</a>
+                                    @endcan
+                                    @can('delete',App\Models\Aulas::class)
                                         <a href="javascript: if(confirm('Realmente deseja deletar?')) { window.location.href = '{{ route ('aula.deletar',$aula->id_aula)}}'}"class="btn btn-danger">Excluir</a>
-                                        
-                    @endguest
+                                        @endcan
+                   
                                         
                                         
                                         

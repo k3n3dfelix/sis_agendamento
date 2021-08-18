@@ -50,6 +50,7 @@ Route::get('/usuario/deletar/{id}', [App\Http\Controllers\UsuarioController::cla
 
 //Rotas Aulas---------------------------------------------------------------------------------------------
 Route::get('/aula', [App\Http\Controllers\AulaController::class, 'index'])->name('aula');
+Route::get('/aula/professor', [App\Http\Controllers\AulaController::class, 'professor'])->name('professor');
 Route::get('/aula/adicionar', [App\Http\Controllers\AulaController::class, 'adicionar'])->name('aula.adicionar');
 Route::post('/aula/salvar', [App\Http\Controllers\AulaController::class, 'salvar'])->name('aula/salvar');
 Route::post('/aula/salvar', [App\Http\Controllers\AulaController::class, 'salvar'])->name('aula.salvar');
