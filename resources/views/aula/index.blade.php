@@ -16,7 +16,7 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>ID Usuário</th>
+                                    <th>Professor</th>
                                     <th>Materia</th>
                                     <th>Data</th>
                                     <th>Hora</th>
@@ -30,7 +30,7 @@
                                 <tr>
                                 
                                     <td>{{$aula->id_aula}}</td>
-                                    <td>{{$aula->nome}}</td>
+                                    <td>{{$aula->nome }} {{$aula->sobrenome }}</td>
                                     <td>{{$aula->materia}}</td>
                                     <td>{{$aula->data}}</td>
                                     <td>{{$aula->hora}}</td>

@@ -10,14 +10,15 @@
                 <div class="card-body">
                     <table class="table table-bordered">
                             <thead>
-                                <tr>
+                                <tr class="text-center">
                                     <th>ID</th>
-                                    <th>ID Aula</th>
-                                    <th>Professor</th>
+                                    <th>Matéria</th>
+                                    <th>Aluno</th>
                                     <th>Status</th>
                                    
-                                   
+                                    @can('viewbtnConfirmAgend',App\Models\Agenda::class)
                                     <th>Opções</th>
+                                    @endcan
                                  
                                 </tr>
                             </thead>
@@ -25,24 +26,24 @@
                                 @foreach($agendas as $agenda)
                                
                                 
-                                <tr>
+                                <tr class="text-center">
                                 
                                     <td>{{$agenda->id_agenda}}</td>
-                                    <td>{{$agenda->aula_id}}</td>
-                                    <td>{{$agenda->usuario_id}}</td>
+                                    <td>{{$agenda->materia}}</td>
+                                    <td>{{$agenda->nome}}</td>
                                     <td>{{($agenda->status == 1 ? 'Aguardando Aprovação' : '')}}
                                         {{($agenda->status == 2 ? 'Aprovado' : '')}}
                                         {{($agenda->status == 3 ? 'Cancelado Professor' : '')}}
                                         {{($agenda->status == 4 ? 'Cancelado Aluno' : '')}}
                                     </td>
+                                    @can('viewbtnConfirmAgend',App\Models\Agenda::class)
                                     <td>
                                       
-                                    <a href="{{route('agenda.editar',$agenda->id_agenda)}}"class="btn btn-primary">Visualizar Alunos</a>
-                                    <a href="{{route('agenda.editar',$agenda->id_agenda)}}"class="btn btn-success">Confirmar Agendamento</a>
-                                    <a href="javascript: if(confirm('Realmente deseja deletar?')) { window.location.href = '{{ route ('agenda.deletar',$agenda->id_agenda)}}'}"class="btn btn-danger">Cancelar Agendamento</a>
-                                        
-                                        
+                                       
+                                        <a href="{{route('agenda.editar',$agenda->id_agenda)}}"class="btn btn-success">Confirmar Agendamento</a>
+                                        <a href="javascript: if(confirm('Realmente deseja deletar?')) { window.location.href = '{{ route ('agenda.deletar',$agenda->id_agenda)}}'}"class="btn btn-danger">Cancelar Agendamento</a>
                                     </td>
+                                    @endcan 
                                 </tr>
                                 @endforeach
                             </tbody>

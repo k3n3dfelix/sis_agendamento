@@ -15,7 +15,6 @@ class AulaController extends Controller
        
         $aulas = DB::table('aulas')
         ->join('usuarios', 'aulas.usuario_id', '=', 'usuarios.id_usuario')
-        
         ->paginate(10);;
         
         return view('aula.index',compact('aulas'));

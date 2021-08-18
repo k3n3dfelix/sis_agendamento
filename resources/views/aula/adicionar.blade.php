@@ -11,7 +11,9 @@
                     <li class="breadcrumb-item "><a href="{{ route('aula') }}"> Aulas</a></li>
                     <li class="breadcrumb-item active">Adicionar</li>
                 </ol>
-
+                @php
+                $usuario_id = auth()->user()->id_usuario;
+                @endphp
                 <div class="card-body">
                     <form action="{{route('aula.salvar')}}" method="post">
                         {{csrf_field()}}
@@ -25,8 +27,8 @@
                                 <input type="text" class="form-control" id="id_tipo_usuario" name="id_tipo_usuario">
                             </div> -->
                             <div class="form-group col-md-12 ">
-                                <label for="nome">ID USUARIO</label>
-                                <input type="hidden" class="form-control" id="usuario_id" name="usuario_id" value="{{auth()->user()->usuario_id}}">
+                                
+                                <input type="hidden" class="form-control" id="usuario_id" name="usuario_id" value="{{$usuario_id}}">
                             </div>
                             <div class="form-group col-md-12 ">
                                 <label for="nome">Materia</label>

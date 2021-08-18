@@ -19,8 +19,8 @@
                         <div class="form-row">
                         
                             <div class="form-group col-md-12 ">
-                                <label for="tipo_id">ID Usuário</label>
-                                <input type="text" class="form-control" id="tipo_id" name="usuario_id" value="{{ isset($aulas->usuario_id) ? $aulas->usuario_id : ''}}">
+                                
+                                <input type="hidden" class="form-control" id="tipo_id" name="usuario_id" value="{{ isset($aulas->usuario_id) ? $aulas->usuario_id : ''}}">
                             </div>
                             <div class="form-group col-md-12 ">
                                 <label for="nome">Materia</label>

@@ -14,7 +14,11 @@ class AgendaController extends Controller
 {
     public function index()
     {   
-        $agendas = DB::table('agendas')->paginate(10);;
+        $agendas = DB::table('agendas')
+        ->join('usuarios', 'agendas.usuario_id', '=', 'usuarios.id_usuario')
+        ->join('aulas', 'agendas.aula_id', '=', 'aulas.id_aula')
+        ->paginate(50);
+        //var_dump($agendas);exit;
         
         return view('agenda.index',compact('agendas'));
 
@@ -28,15 +32,28 @@ class AgendaController extends Controller
 
     public function agendar($id){
         
+       
         $aulas = Aulas::find($id);
-        
-        return view('agenda.agendarconf',compact('aulas'));
+        $id_usuario = auth()->user()->id_usuario;
+        $dados = array(
+            "aula_id" => $id,
+            "usuario_id" =>$id_usuario,
+            "status" => 1,
+        );
+       
+        $aula = Agenda::create($dados);
+        $agendas = DB::table('agendas')
+        ->join('usuarios', 'agendas.usuario_id', '=', 'usuarios.id_usuario')
+        ->join('aulas', 'agendas.aula_id', '=', 'aulas.id_aula')
+        ->paginate(50);
+        return view('agenda.index',compact('agendas'));
     }
 
     public function salvar(Request $request){
         
         $dados = $request->all();
         $agendas = Agenda::create($dados);
+      
          \Session::flash('flash_message',[
             'msg'=>"Registro adicionado com sucesso!",
             'class'=>"alert-success"
