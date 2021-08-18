@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Listagem Tipos Usuários') }}</div>
-                @dump(auth()->user())
+                <!-- @dump(auth()->user()) -->
                 <div class="card-body">
                     <table class="table table-bordered">
                             <thead>

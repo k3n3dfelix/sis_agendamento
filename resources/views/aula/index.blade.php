@@ -6,11 +6,11 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">{{ __('Listagem  Aulas') }}</div>
-                @dump(auth()->user()->tipo_id)
+                <!-- @dump(auth()->user()->tipo_id)
                 @php 
                     $id = auth()->user()->tipo_id;
                     echo $id;
-                @endphp
+                @endphp -->
                 <div class="card-body">
                     <table class="table table-bordered">
                             <thead>
