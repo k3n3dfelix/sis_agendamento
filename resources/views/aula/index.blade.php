@@ -6,7 +6,11 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">{{ __('Listagem  Aulas') }}</div>
-
+                @dump(auth()->user()->tipo_id)
+                @php 
+                    $id = auth()->user()->tipo_id;
+                    echo $id;
+                @endphp
                 <div class="card-body">
                     <table class="table table-bordered">
                             <thead>
@@ -31,10 +35,17 @@
                                     <td>{{$aula->data}}</td>
                                     <td>{{$aula->hora}}</td>
                                     <td>
-                                        <a href="{{route('aula.editar',$aula->id_aula)}}"class="btn btn-primary">Visualizar Alunos</a>
-                                        <a href="{{route('agenda.agendar',$aula->id_aula)}}"class="btn btn-success">Agendar</a>
+                                    @guest
+                    @if($id === '1')
+                    echo <a href="{{route('aula.editar',$aula->id_aula)}}"class="btn btn-primary">Visualizar Alunos</a>  
+                    @endif
+                    @else
+                    <a href="{{route('agenda.agendar',$aula->id_aula)}}"class="btn btn-success">Agendar</a>
                                         <a href="{{route('aula.editar',$aula->id_aula)}}"class="btn btn-warning">Editar</a>
                                         <a href="javascript: if(confirm('Realmente deseja deletar?')) { window.location.href = '{{ route ('aula.deletar',$aula->id_aula)}}'}"class="btn btn-danger">Excluir</a>
+                                        
+                    @endguest
+                                        
                                         
                                         
                                     </td>
