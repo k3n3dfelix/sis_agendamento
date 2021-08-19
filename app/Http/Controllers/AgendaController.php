@@ -47,8 +47,9 @@ class AgendaController extends Controller
     public function agendar($id){
         
        
-        $aulas = Aulas::find($id);
+        $aulas = Aulas::find($id);  
         $id_usuario = auth()->user()->id_usuario;
+        
         $dados = array(
             "aula_id" => $id,
             "usuario_id" =>$id_usuario,

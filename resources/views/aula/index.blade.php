@@ -57,8 +57,9 @@
                                 @endforeach
                             </tbody>
                         </table>
-
+                        @can('update',App\Models\Aulas::class)
                         <a href="{{route('aula.adicionar')}}" class="btn btn-primary pull-left">Adicionar</a>
+                        @endcan
                 </div>
 
                 @if(Session::has('flash_message'))

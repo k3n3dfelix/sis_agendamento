@@ -21,6 +21,15 @@ class AgendaPolicy
         //
     }
 
+    public function viewbtnCancelAgend(Usuarios $usuarios)
+    {
+        if($usuarios->tipo_id === 1 || $usuarios->tipo_id === 3){
+            return true;
+        }else{
+        return false ;
+        }
+    }
+
     public function viewbtnConfirmAgend(Usuarios $usuarios)
     {
         if($usuarios->tipo_id === 1 || $usuarios->tipo_id === 2){
