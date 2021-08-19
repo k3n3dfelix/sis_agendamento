@@ -20,7 +20,7 @@
                                             <a class="nav-link" href="{{ route('agenda') }}">{{ __('Agenda') }}</a>
                             </li>
                         <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('aula') }}">{{ __('Aulas') }}</a>
+                                            <a class="nav-link" href="{{ route('professor') }}">{{ __('Aulas') }}</a>
                         </li>
                         @can('vermenu',App\Models\Tipos::class)
                         <li class="nav-item">

@@ -5,16 +5,14 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Listagem  Agendas') }}</div>
+                <div class="card-header">{{ __('Listagem  Agendas Aula') }}</div>
 
                 <div class="card-body">
                     <table class="table table-bordered">
                             <thead>
                                 <tr class="text-center">
                                     <th>ID</th>
-                                    <th>Matéria</th>        
-                                    <th>Hora</th>
-                                    <th>Data</th>
+                                    <th>Matéria</th>
                                     <th>Aluno</th>
                                     <th>Status</th>
                                    
@@ -32,8 +30,6 @@
                                 
                                     <td>{{$agenda->id_agenda}}</td>
                                     <td>{{$agenda->materia}}</td>
-                                    <td>{{$agenda->hora}}</td>
-                                    <td>{{$agenda->data}}</td>
                                     <td>{{$agenda->nome}}</td>
                                     <td>{{($agenda->status == 1 ? 'Aguardando Aprovação' : '')}}
                                         {{($agenda->status == 2 ? 'Aprovado' : '')}}

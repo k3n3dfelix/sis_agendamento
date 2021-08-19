@@ -60,6 +60,7 @@ Route::get('/aula/deletar/{id}', [App\Http\Controllers\AulaController::class, 'd
 
 //Rotas Agendas---------------------------------------------------------------------------------------------
 Route::get('/agenda', [App\Http\Controllers\AgendaController::class, 'index'])->name('agenda');
+Route::get('/agenda/confirmar/{id}', [App\Http\Controllers\AgendaController::class, 'confirmar'])->name('agenda.confirmar');
 Route::get('/agenda/adicionar', [App\Http\Controllers\AgendaController::class, 'adicionar'])->name('agenda.adicionar');
 Route::get('/agenda/agendar/{id}', [App\Http\Controllers\AgendaController::class, 'agendar'])->name('agenda.agendar');
 Route::get('/agenda/agendarconf', [App\Http\Controllers\AgendaController::class, 'agendarconf'])->name('agendarconf.agendarconf');

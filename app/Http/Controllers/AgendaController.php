@@ -25,6 +25,20 @@ class AgendaController extends Controller
        
     }
 
+    public function confirmar($id)
+    {   
+        $agendas = DB::table('agendas')
+        ->join('usuarios', 'agendas.usuario_id', '=', 'usuarios.id_usuario')
+        ->join('aulas', 'agendas.aula_id', '=', 'aulas.id_aula')
+        ->where('aula_id', $id)
+        ->paginate(50);
+        //var_dump($agendas);exit;
+        
+        return view('agenda.indexaula',compact('agendas'));
+
+       
+    }
+
     public function adicionar(){
         
         return view('agenda.adicionar');
@@ -66,8 +80,13 @@ class AgendaController extends Controller
     public function editar($id){
         
         $agendas = Agenda::find($id);
-        
-        
+        // $agendadados = DB::table('agendas')
+        // ->join('usuarios', 'agendas.usuario_id', '=', 'usuarios.id_usuario')
+        // ->join('aulas', 'agendas.aula_id', '=', 'aulas.id_aula')
+        // ->where('id_agenda', $id)
+        // ->paginate(50);
+       //$materia = $agendadados->materia;
+       //var_dump($agendadados->status);exit;
         return view('agenda.editar', compact('agendas'));
       
        

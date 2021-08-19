@@ -18,14 +18,15 @@
                         @method('PUT')
                         <div class="form-row">
                         
-                            <div class="form-group col-md-12 ">
+                            <!-- <div class="form-group col-md-12 ">
                                 <label for="tipo_id">ID Aula</label>
-                                <input type="text" class="form-control" id="aula_id" name="aula_id" value="{{ isset($agendas->aula_id) ? $agendas->aula_id : ''}}">
+                                <input type="text" class="form-control" id="aula_id" name="aula_id" value="">
                             </div>
                             <div class="form-group col-md-12 ">
                                 <label for="nome">ID Usuario</label>
                                 <input type="text" class="form-control" id="usuario_id" name="usuario_id" value="{{ isset($agendas->usuario_id) ? $agendas->usuario_id : ''}}">
-                            </div>
+                            </div> -->
+
                             <div class="form-group col-md-12 ">
                             <label for="status">Status Agendamento</label>
                             <select class="form-control" name="status">

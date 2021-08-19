@@ -37,7 +37,7 @@
                                     <td>
                                   
                                     @can('vermenu',App\Models\Aulas::class)
-                                        <a href="{{route('aula.editar',$aula->id_aula)}}"class="btn btn-primary">Visualizar Alunos</a>  
+                                        <a href="{{route('agenda.confirmar',$aula->id_aula)}}"class="btn btn-primary">Visualizar Alunos</a>  
                                     @endcan
                                     @can('viewbtnAgendar',App\Models\Aulas::class)
                                         <a href="{{route('agenda.agendar',$aula->id_aula)}}"class="btn btn-success">Agendar</a>
