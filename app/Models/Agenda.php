@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Agenda extends Model
 {
-    use HasFactory;
+    use HasFactory,Notifiable;
 
     protected $fillable = ['aula_id','usuario_id','status'];
     protected $primaryKey = 'id_agenda';

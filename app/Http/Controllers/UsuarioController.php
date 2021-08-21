@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Usuarios;
 use App\Models\Tipos;
+use App\Notifications\NotificaUsuario;
 
 class UsuarioController extends Controller
 {

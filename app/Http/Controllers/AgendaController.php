@@ -10,6 +10,7 @@ use App\Models\Agenda;
 
 
 
+
 class AgendaController extends Controller
 {
     public function index()
@@ -88,12 +89,9 @@ class AgendaController extends Controller
         // ->paginate(50);
        //$materia = $agendadados->materia;
        //var_dump($agendadados->status);exit;
-        return view('agenda.editar', compact('agendas'));
-      
-       
-    }
-
-    public function atualizar(Request $request, $id){
+    
+        
+ function atualizar(Request $request, $id){
         
         $agendas = Agenda::find($id);
      
@@ -111,7 +109,7 @@ class AgendaController extends Controller
        
     }
 
-    public function deletar($id){
+    function deletar($id){
         Agenda::find($id)->delete();
 
         \Session::flash('flash_message',[
@@ -119,4 +117,5 @@ class AgendaController extends Controller
             'class'=>"alert-success"
         ]);        return redirect()->route('agenda');
     }
+}
 }

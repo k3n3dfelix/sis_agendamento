@@ -11,7 +11,7 @@ use Illuminate\Notifications\Notifiable;
 
 class Usuarios extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory,Notifiable;
 
     protected $fillable = ['descricao','tipo_id','nome','sobrenome','login','senha'];
     protected $primaryKey = 'id_usuario';
