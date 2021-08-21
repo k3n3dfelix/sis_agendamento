@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 //use Illuminate\Contracts\Auth\Authenticatable;
 //use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\DB;
-
+use App\Models\Agenda;
 use App\Models\Usuarios;
 use App\Models\User;
 
@@ -27,9 +27,17 @@ class AutenticacaoController extends Controller
     // public const HOME = '/admin';
     //$user = Auth::user();dd($user);
     
-    if(Auth::check() === true ){
+   
+
+      $agenda = Agenda::find(32);
+      //$agenda = DB::table('agendas')->get();
+    
+       foreach($agenda->unreadNotifications as $notification){
+           echo $notification;
+       }
+
         return view('paineladm');
-    }
+    
         return redirect()->route('login');   
     }
 

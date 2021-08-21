@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notification;
 use App\Models\Usuarios;
 use App\Models\Agenda;
 
-class NotificaUsuario extends Notification
+class NotificaUsuario extends Notification 
 {
     use Queueable;
     
@@ -22,8 +22,10 @@ class NotificaUsuario extends Notification
      */
    
     public function __construct( Agenda $agenda)
-    {
-        $this->$agenda = $agenda;
+    {   
+       
+        $this->agenda = $agenda;
+        
     }
 
     /**
@@ -58,10 +60,11 @@ class NotificaUsuario extends Notification
      * @return array
      */
     public function toDatabase($notifiable)
-    {
+    {   
+        
         return [
             'mensagem'=> 'feito teste',
-            $this->agenda
+             $this->agenda
         ];
     }
 }

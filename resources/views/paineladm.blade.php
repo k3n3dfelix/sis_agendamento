@@ -17,6 +17,15 @@
                     @endif
 
                     {{ __('Voce esta no painel ADM') }}
+
+                    @foreach($notifications as $notificacao)
+                                <tr>
+                                
+                                    <td>{{$notificacao->data}}</td>
+                                   
+                                </tr>
+                                @endforeach
+                   
                 </div>
             </div>
         </div>

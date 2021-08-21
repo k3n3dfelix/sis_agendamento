@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Aulas;
 use App\Models\Usuarios;
 use App\Models\Agenda;
+use App\Notifications\NotificaUsuario;
+use Illuminate\Support\Facades\Notification;
 
 
 
@@ -56,8 +58,13 @@ class AgendaController extends Controller
             "usuario_id" =>$id_usuario,
             "status" => 1,
         );
+        //$agenda = $dados['status'];
+        //$agenda->notify(new NotificaUsuario ($agenda));
+       // $agenda->notify(new NotificaUsuario($aulas));
+        //Notification::send($agenda, new NotificaUsuario($agenda));
        
-        $aula = Agenda::create($dados);
+        $agenda = Agenda::create($dados);
+        $agenda->notify(new NotificaUsuario($agenda));
         $agendas = DB::table('agendas')
         ->join('usuarios', 'agendas.usuario_id', '=', 'usuarios.id_usuario')
         ->join('aulas', 'agendas.aula_id', '=', 'aulas.id_aula')
@@ -69,6 +76,7 @@ class AgendaController extends Controller
         
         $dados = $request->all();
         $agendas = Agenda::create($dados);
+        
       
          \Session::flash('flash_message',[
             'msg'=>"Registro adicionado com sucesso!",

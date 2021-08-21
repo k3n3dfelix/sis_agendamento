@@ -69,3 +69,6 @@ Route::post('/agenda/salvar', [App\Http\Controllers\AgendaController::class, 'sa
 Route::get('/agenda/editar/{id}', [App\Http\Controllers\AgendaController::class, 'editar'])->name('agenda.editar');
 Route::put('/agenda/atualizar/{id}', [App\Http\Controllers\AgendaController::class, 'atualizar'])->name('agenda.atualizar');
 Route::get('/agenda/deletar/{id}', [App\Http\Controllers\AgendaController::class, 'deletar'])->name('agenda.deletar');
+
+
+Route::get('/notification', [App\Http\Controllers\NotificationController::class, 'notification'])->name('notification');
