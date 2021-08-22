@@ -64,7 +64,13 @@ class AgendaController extends Controller
         //Notification::send($agenda, new NotificaUsuario($agenda));
        
         $agenda = Agenda::create($dados);
-        $agenda->notify(new NotificaUsuario($agenda));
+        $id_aula = $agenda->aula_id;
+        $aulas = Aulas::find($id_aula);
+        $id_professor = $aulas->usuario_id;
+        $usuario =   $usuarios = Usuarios::find($id_professor);
+        
+        $usuario->notify(new NotificaUsuario($usuario, $agenda));
+        
         $agendas = DB::table('agendas')
         ->join('usuarios', 'agendas.usuario_id', '=', 'usuarios.id_usuario')
         ->join('aulas', 'agendas.aula_id', '=', 'aulas.id_aula')
@@ -90,13 +96,16 @@ class AgendaController extends Controller
     public function editar($id){
         
         $agendas = Agenda::find($id);
-        // $agendadados = DB::table('agendas')
-        // ->join('usuarios', 'agendas.usuario_id', '=', 'usuarios.id_usuario')
-        // ->join('aulas', 'agendas.aula_id', '=', 'aulas.id_aula')
-        // ->where('id_agenda', $id)
-        // ->paginate(50);
-       //$materia = $agendadados->materia;
-       //var_dump($agendadados->status);exit;
+        
+    //     $agendadados = DB::table('agendas')
+    //     ->join('usuarios', 'agendas.usuario_id', '=', 'usuarios.id_usuario')
+    //     ->join('aulas', 'agendas.aula_id', '=', 'aulas.id_aula')
+    //     >where('id_agenda', $id)
+    //     ->paginate(50);
+    //    $materia = $agendadados->materia;
+    //    var_dump($agendadados->status);exit;
+        return view('agenda.agendarconf',compact('agendas'));
+    
     
         
  function atualizar(Request $request, $id){

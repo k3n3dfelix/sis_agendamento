@@ -13,7 +13,7 @@ class NotificaUsuario extends Notification
 {
     use Queueable;
     
-    private $agenda;
+    private $usuario;
 
     /**
      * Create a new notification instance.
@@ -21,9 +21,10 @@ class NotificaUsuario extends Notification
      * @return void
      */
    
-    public function __construct( Agenda $agenda)
+    public function __construct( Usuarios $usuario,Agenda $agenda)
     {   
        
+        $this->usuario = $usuario;
         $this->agenda = $agenda;
         
     }
@@ -63,8 +64,9 @@ class NotificaUsuario extends Notification
     {   
         
         return [
-            'mensagem'=> 'feito teste',
-             $this->agenda
+            'mensagem'=> 'você tem uma nova aula agendada, por favor acesse seu painel de aprovação !',
+            'usuario'=>$this->usuario,
+            'agenda'=>$this->agenda
         ];
     }
 }

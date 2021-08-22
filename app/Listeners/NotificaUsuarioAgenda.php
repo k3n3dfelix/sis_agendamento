@@ -26,8 +26,8 @@ class NotificaUsuarioAgenda
      */
     public function handle($event)
     {
-        $agenda = Agenda::find($event->agenda->id);
-        dd($agenda);exit;
-        $agenda->notify(new NotificaUsuario($agenda));
+        $usuario = Usuarios::find($event->usuario->id);
+        
+        $usuario->notify(new NotificaUsuario($usuario));
     }
 }

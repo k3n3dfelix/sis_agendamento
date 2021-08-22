@@ -25,16 +25,20 @@ class AutenticacaoController extends Controller
     public function index(){
 
     // public const HOME = '/admin';
-    //$user = Auth::user();dd($user);
+    $user = Auth::user()->id_usuario;;
     
    
 
-      $agenda = Agenda::find(32);
+      $usuario = Usuarios::find($user);
+     
       //$agenda = DB::table('agendas')->get();
-    
-       foreach($agenda->unreadNotifications as $notification){
-           echo $notification;
-       }
+    //     $contador = 0;
+    //     $array = array();
+    //    foreach($usuario->unreadNotifications as $notification){
+    //        var_dump($notification->data);
+           
+    //    }
+    //   exit;
 
         return view('paineladm');
     
