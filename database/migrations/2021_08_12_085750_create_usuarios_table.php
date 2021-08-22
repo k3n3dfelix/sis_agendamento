@@ -18,7 +18,7 @@ class CreateUsuariosTable extends Migration
             $table->integer('tipo_id')->unsigned();
             $table->string('nome');
             $table->string('sobrenome');
-            $table->string('login')->unique();;
+            $table->string('login');
             $table->string('senha');
             $table->rememberToken();
             $table->timestamps();
