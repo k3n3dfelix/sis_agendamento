@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Listagem  Agendas') }}</div>
+                <div class="card-header">{{ __('Listagem Meus Agendamentos') }}</div>
 
                 <div class="card-body">
                     <table class="table table-bordered">
@@ -23,10 +23,6 @@
                                     @endcan
 
                                     @can('viewbtnCancelAgend',App\Models\Agenda::class)
-                                    <th>Opções</th>
-                                    @endcan
-                                   
-                                    @can('viewMenusAdm',App\Models\Agenda::class)
                                     <th>Opções</th>
                                     @endcan
                                 </tr>
@@ -49,7 +45,7 @@
                                     </td>
                                     
                                     @can('viewbtnConfirmAgend',App\Models\Agenda::class)
-                                    @if($agenda->status != 4 and $agenda->status != 2 and $agenda->status != 3)
+                                    @if($agenda->status != 4 and $agenda->status != 2)
                                     <td>
                                         <a href="{{route('agenda.editar',$agenda->id_agenda)}}"class="btn btn-success">Confirmar Agendamento</a>
                                     </td>
@@ -64,7 +60,7 @@
                                     @if($agenda->status != 4)
                                     <td>
                                         <!-- <a href="javascript: if(confirm('Realmente deseja deletar?')) { window.location.href = '{{ route ('agenda.deletar',$agenda->id_agenda)}}'}"class="btn btn-danger">Cancelar Agendamento</a> -->
-                                        <a href="{{route('agenda.editar',$agenda->id_agenda)}}"class="btn btn-danger">Cancelar Agendamento</a>
+                                        <a href="{{route('agenda.editaraluno',$agenda->id_agenda)}}"class="btn btn-danger">Cancelar Agendamento</a>
                                     </td>
                                     @else 
                                     <td>
@@ -72,22 +68,12 @@
                                     </td>
                                     @endif
                                     @endcan 
-
-                                    @can('viewMenusAdm',App\Models\Agenda::class)
-                                   
-                                    <td>
-                                        <a href="{{route('agenda.editar',$agenda->id_agenda)}}"class="btn btn-success">Confirmar Agendamento</a>
-                                    </td>
-                                    <td>
-                                        <a href="{{route('agenda.editar',$agenda->id_agenda)}}"class="btn btn-danger">Cancelar Agendamento</a>
-</td>
-                                    @endcan 
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
-                        <!--
-                        <a href="{{route('agenda.adicionar')}}" class="btn btn-primary pull-left">Adicionar</a> -->
+
+                        <a href="{{route('agenda.adicionar')}}" class="btn btn-primary pull-left">Adicionar</a>
                 </div>
 
                 @if(Session::has('flash_message'))

@@ -13,7 +13,7 @@
                 </ol>
 
                 <div class="card-body">
-                    <form action="{{route('agenda.atualizar',$agendas->id_agenda)}}" method="post">
+                    <form action="{{route('agenda.atualizaraluno',$agendas->id_agenda)}}" method="post">
                         {{csrf_field()}}
                         @method('PUT')
                         <div class="form-row">

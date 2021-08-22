@@ -17,13 +17,30 @@ class AgendaController extends Controller
 {
     public function index()
     {   
+        $id_usuario = auth()->user()->id_usuario;
         $agendas = DB::table('agendas')
         ->join('usuarios', 'agendas.usuario_id', '=', 'usuarios.id_usuario')
         ->join('aulas', 'agendas.aula_id', '=', 'aulas.id_aula')
+        ->where('aulas.usuario_id', $id_usuario)
         ->paginate(50);
         //var_dump($agendas);exit;
         
         return view('agenda.index',compact('agendas'));
+
+       
+    }
+
+    public function agendaaluno()
+    {   
+        $id_usuario = auth()->user()->id_usuario;
+        $agendas = DB::table('agendas')
+        ->join('usuarios', 'agendas.usuario_id', '=', 'usuarios.id_usuario')
+        ->join('aulas', 'agendas.aula_id', '=', 'aulas.id_aula')
+        ->where('id_usuario', $id_usuario)
+        ->paginate(50);
+        //var_dump($agendas);exit;
+        
+        return view('agenda.indexaluno',compact('agendas'));
 
        
     }
@@ -74,8 +91,8 @@ class AgendaController extends Controller
         $agendas = DB::table('agendas')
         ->join('usuarios', 'agendas.usuario_id', '=', 'usuarios.id_usuario')
         ->join('aulas', 'agendas.aula_id', '=', 'aulas.id_aula')
-        ->paginate(50);
-        return view('agenda.index',compact('agendas'));
+        ->paginate(100);
+        return view('agenda.indexaluno',compact('agendas'));
     }
 
     public function salvar(Request $request){
@@ -104,11 +121,26 @@ class AgendaController extends Controller
     //     ->paginate(50);
     //    $materia = $agendadados->materia;
     //    var_dump($agendadados->status);exit;
-        return view('agenda.agendarconf',compact('agendas'));
+    return view('agenda.editar', compact('agendas'));
+    }
+
+    public function editaraluno($id){
+        
+        $agendas = Agenda::find($id);
+        
+    //     $agendadados = DB::table('agendas')
+    //     ->join('usuarios', 'agendas.usuario_id', '=', 'usuarios.id_usuario')
+    //     ->join('aulas', 'agendas.aula_id', '=', 'aulas.id_aula')
+    //     >where('id_agenda', $id)
+    //     ->paginate(50);
+    //    $materia = $agendadados->materia;
+    //    var_dump($agendadados->status);exit;
+    return view('agenda.editaraluno', compact('agendas'));
+    }
     
     
         
- function atualizar(Request $request, $id){
+ public function atualizar(Request $request, $id){
         
         $agendas = Agenda::find($id);
      
@@ -126,7 +158,25 @@ class AgendaController extends Controller
        
     }
 
-    function deletar($id){
+    public function atualizaraluno(Request $request, $id){
+        
+        $agendas = Agenda::find($id);
+     
+        $dados = $request->all();
+       
+       $agendas->update($dados);
+
+        \Session::flash('flash_message',[
+            'msg'=>"Registro atualizado com sucesso!",
+            'class'=>"alert-success"
+        ]);
+
+        return redirect()->route('agendaaluno');
+      
+       
+    }
+
+    public function deletar($id){
         Agenda::find($id)->delete();
 
         \Session::flash('flash_message',[
@@ -134,5 +184,4 @@ class AgendaController extends Controller
             'class'=>"alert-success"
         ]);        return redirect()->route('agenda');
     }
-}
 }

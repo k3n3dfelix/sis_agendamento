@@ -16,9 +16,9 @@
                                     <th>Aluno</th>
                                     <th>Status</th>
                                    
-                                    @can('viewbtnConfirmAgend',App\Models\Agenda::class)
+                                    <!-- @can('viewbtnConfirmAgend',App\Models\Agenda::class)
                                     <th>Opções</th>
-                                    @endcan
+                                    @endcan -->
                                  
                                 </tr>
                             </thead>
@@ -36,20 +36,21 @@
                                         {{($agenda->status == 3 ? 'Cancelado Professor' : '')}}
                                         {{($agenda->status == 4 ? 'Cancelado Aluno' : '')}}
                                     </td>
+                                    <!--
                                     @can('viewbtnConfirmAgend',App\Models\Agenda::class)
+                                    @if($agenda->status != 4)
                                     <td>
-                                      
-                                       
                                         <a href="{{route('agenda.editar',$agenda->id_agenda)}}"class="btn btn-success">Confirmar Agendamento</a>
                                         <a href="javascript: if(confirm('Realmente deseja deletar?')) { window.location.href = '{{ route ('agenda.deletar',$agenda->id_agenda)}}'}"class="btn btn-danger">Cancelar Agendamento</a>
                                     </td>
-                                    @endcan 
+                                    @endif
+                                    @endcan  -->
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
-
-                        <a href="{{route('agenda.adicionar')}}" class="btn btn-primary pull-left">Adicionar</a>
+                        <!-- 
+                        <a href="{{route('agenda.adicionar')}}" class="btn btn-primary pull-left">Adicionar</a> -->
                 </div>
 
                 @if(Session::has('flash_message'))

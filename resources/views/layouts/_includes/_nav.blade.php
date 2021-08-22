@@ -16,17 +16,38 @@
                     <!-- Left Side Of Navbar -->
                     
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('agenda') }}">{{ __('Agenda') }}</a>
-                            </li>
-                        <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('professor') }}">{{ __('Aulas') }}</a>
+                    <li class="nav-item">
+                            <a class="nav-link" href="{{ route('paineladm') }}">{{ __('Painel Administrativo') }}</a>
                         </li>
-                        @can('vermenu',App\Models\Tipos::class)
+                    @can('vermenu',App\Models\Tipos::class)
                         <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('usuario') }}">{{ __('Usuários') }}</a>
+                                <a class="nav-link" href="{{ route('agenda') }}">{{ __('Agenda Geral') }}</a>
                         </li>
                         @endcan
+                        @can('viewMenuAlun',App\Models\Agenda::class)
+                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('agendaaluno') }}">{{ __('Meus Agendamentos') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('aula') }}">{{ __('Aulas') }}</a>
+                        </li>
+                        @endcan
+                       
+                        @can('viewMenuPro',App\Models\Agenda::class)
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('agenda') }}">{{ __('Aulas Aprovação') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('professor') }}">{{ __('Gerenciar Aulas') }}</a>
+                        </li>
+                        @endcan
+                        
+                        @can('vermenu',App\Models\Tipos::class)
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('usuario') }}">{{ __('Usuários') }}</a>
+                        </li>
+                        @endcan
+
                         @can('vermenu',App\Models\Tipos::class)
                         <li class="nav-item">
                                         <a class="nav-link" href="{{ route('tipo') }}">{{ __('Tipos Usuários') }}</a>

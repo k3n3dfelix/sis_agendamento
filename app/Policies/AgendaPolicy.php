@@ -21,9 +21,17 @@ class AgendaPolicy
         //
     }
 
+    public function viewMenusAdm(Usuarios $usuarios)
+    {
+        if($usuarios->tipo_id === 1){
+            return true;
+        }else{
+        return false ;
+        }
+    }
     public function viewbtnCancelAgend(Usuarios $usuarios)
     {
-        if($usuarios->tipo_id === 1 || $usuarios->tipo_id === 3){
+        if($usuarios->tipo_id === 3){
             return true;
         }else{
         return false ;
@@ -32,12 +40,40 @@ class AgendaPolicy
 
     public function viewbtnConfirmAgend(Usuarios $usuarios)
     {
+        if($usuarios->tipo_id === 1 ||$usuarios->tipo_id === 2){
+            return true;
+        }else{
+        return false ;
+        }
+    }
+    public function viewbtnCanAgend(Usuarios $usuarios)
+    {
+        if($usuarios->tipo_id === 3){
+            return true;
+        }else{
+        return false ;
+        }
+    }
+
+    public function viewMenuPro(Usuarios $usuarios)
+    {
         if($usuarios->tipo_id === 1 || $usuarios->tipo_id === 2){
             return true;
         }else{
         return false ;
         }
     }
+
+    public function viewMenuAlun(Usuarios $usuarios)
+    {
+        if($usuarios->tipo_id === 1 || $usuarios->tipo_id === 3){
+            return true;
+        }else{
+        return false ;
+        }
+    }
+
+    
 
     /**
      * Determine whether the user can view the model.

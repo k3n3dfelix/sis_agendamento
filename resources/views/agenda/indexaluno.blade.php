@@ -64,7 +64,7 @@
                                     @if($agenda->status != 4)
                                     <td>
                                         <!-- <a href="javascript: if(confirm('Realmente deseja deletar?')) { window.location.href = '{{ route ('agenda.deletar',$agenda->id_agenda)}}'}"class="btn btn-danger">Cancelar Agendamento</a> -->
-                                        <a href="{{route('agenda.editar',$agenda->id_agenda)}}"class="btn btn-danger">Cancelar Agendamento</a>
+                                        <a href="{{route('agenda.editaraluno',$agenda->id_agenda)}}"class="btn btn-danger">Cancelar Agendamento</a>
                                     </td>
                                     @else 
                                     <td>
