@@ -59,6 +59,7 @@ Route::put('/aula/atualizar/{id}', [App\Http\Controllers\AulaController::class, 
 Route::get('/aula/deletar/{id}', [App\Http\Controllers\AulaController::class, 'deletar'])->name('aula.deletar');
 
 //Rotas Agendas---------------------------------------------------------------------------------------------
+Route::get('/agendageral', [App\Http\Controllers\AgendaController::class, 'agendageral'])->name('agendageral');
 Route::get('/agenda', [App\Http\Controllers\AgendaController::class, 'index'])->name('agenda');
 Route::get('/agenda/confirmar/{id}', [App\Http\Controllers\AgendaController::class, 'confirmar'])->name('agenda.confirmar');
 Route::get('/agenda/adicionar', [App\Http\Controllers\AgendaController::class, 'adicionar'])->name('agenda.adicionar');

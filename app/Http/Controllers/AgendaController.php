@@ -30,6 +30,20 @@ class AgendaController extends Controller
        
     }
 
+    public function agendageral()
+    {   
+        $id_usuario = auth()->user()->id_usuario;
+        $agendas = DB::table('agendas')
+        ->join('usuarios', 'agendas.usuario_id', '=', 'usuarios.id_usuario')
+        ->join('aulas', 'agendas.aula_id', '=', 'aulas.id_aula')
+        ->paginate(100);
+        //var_dump($agendas);exit;
+        
+        return view('agenda.agendageral',compact('agendas'));
+
+       
+    }
+
     public function agendaaluno()
     {   
         $id_usuario = auth()->user()->id_usuario;

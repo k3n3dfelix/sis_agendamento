@@ -21,6 +21,15 @@ class AgendaPolicy
         //
     }
 
+    public function vermenuAdmin(Usuarios $usuarios)
+    {
+        if($usuarios->tipo_id === 1){
+            return true;
+        }else{
+        return false ;
+        }
+    }
+    
     public function viewMenusAdm(Usuarios $usuarios)
     {
         if($usuarios->tipo_id === 1){
@@ -57,7 +66,7 @@ class AgendaPolicy
 
     public function viewMenuPro(Usuarios $usuarios)
     {
-        if($usuarios->tipo_id === 1 || $usuarios->tipo_id === 2){
+        if($usuarios->tipo_id === 2){
             return true;
         }else{
         return false ;
@@ -66,7 +75,7 @@ class AgendaPolicy
 
     public function viewMenuAlun(Usuarios $usuarios)
     {
-        if($usuarios->tipo_id === 1 || $usuarios->tipo_id === 3){
+        if($usuarios->tipo_id === 3){
             return true;
         }else{
         return false ;

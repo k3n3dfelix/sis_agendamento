@@ -33,9 +33,18 @@ class AulasPolicy
         //
     }
 
+    public function vermenuAdmin(Usuarios $usuarios)
+    {
+        if($usuarios->tipo_id === 1){
+            return true;
+        }else{
+        return false ;
+        }
+    }
+
     public function vermenu(Usuarios $usuarios)
     {
-        if($usuarios->tipo_id === 1 || $usuarios->tipo_id === 2){
+        if($usuarios->tipo_id === 2){
             return true;
         }else{
         return false ;

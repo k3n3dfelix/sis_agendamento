@@ -32,7 +32,7 @@ class TiposPolicy
     {
         //
     }
-    public function vermenu(Usuarios $usuarios)
+    public function vermenuAdmin(Usuarios $usuarios)
     {
         return $usuarios->tipo_id === 1 ;
     }

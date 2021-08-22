@@ -16,17 +16,26 @@
                     <!-- Left Side Of Navbar -->
                     
                     <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
+
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('paineladm') }}">{{ __('Painel Administrativo') }}</a>
                         </li>
-                    @can('vermenu',App\Models\Tipos::class)
+
+                        @can('vermenuAdmin',App\Models\Aulas::class)
                         <li class="nav-item">
-                                <a class="nav-link" href="{{ route('agenda') }}">{{ __('Agenda Geral') }}</a>
+                            <a class="nav-link" href="{{ route('agendageral') }}">{{ __('Agendas Geral') }}</a>
                         </li>
                         @endcan
+                        
+                        @can('vermenuAdmin',App\Models\Aulas::class)
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('aula') }}">{{ __('Aulas Geral') }}</a>
+                        </li>
+                        @endcan
+
                         @can('viewMenuAlun',App\Models\Agenda::class)
                         <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('agendaaluno') }}">{{ __('Meus Agendamentos') }}</a>
+                            <a class="nav-link" href="{{ route('agendaaluno') }}">{{ __('Meus Agendamentos') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('aula') }}">{{ __('Aulas') }}</a>
@@ -42,13 +51,13 @@
                         </li>
                         @endcan
                         
-                        @can('vermenu',App\Models\Tipos::class)
+                        @can('vermenuAdmin',App\Models\Usuarios::class)
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('usuario') }}">{{ __('Usuários') }}</a>
                         </li>
                         @endcan
 
-                        @can('vermenu',App\Models\Tipos::class)
+                        @can('vermenuAdmin',App\Models\Tipos::class)
                         <li class="nav-item">
                                         <a class="nav-link" href="{{ route('tipo') }}">{{ __('Tipos Usuários') }}</a>
                         </li>
