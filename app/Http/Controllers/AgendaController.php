@@ -8,6 +8,7 @@ use App\Models\Aulas;
 use App\Models\Usuarios;
 use App\Models\Agenda;
 use App\Notifications\NotificaUsuario;
+use App\Notifications\NotificaAluno;
 use Illuminate\Support\Facades\Notification;
 
 
@@ -97,8 +98,8 @@ class AgendaController extends Controller
         $agenda = Agenda::create($dados);
         $id_aula = $agenda->aula_id;
         $aulas = Aulas::find($id_aula);
-        $id_professor = $aulas->usuario_id;
-        $usuario =   $usuarios = Usuarios::find($id_professor);
+        $id_aluno = $agenda->usuario_id;
+        $usuario =   $usuarios = Usuarios::find($id_aluno);
         
         $usuario->notify(new NotificaUsuario($usuario, $agenda));
         
@@ -161,6 +162,14 @@ class AgendaController extends Controller
         $dados = $request->all();
        
        $agendas->update($dados);
+
+       $id_usuario = auth()->user()->id_usuario;
+       $id_aula = $agendas->aula_id;
+        $aulas = Aulas::find($id_aula);
+        $id_professor = $aulas->usuario_id;
+        $usuario =   $usuarios = Usuarios::find($id_professor);
+        
+        $usuario->notify(new NotificaAluno($usuario, $agendas));
 
         \Session::flash('flash_message',[
             'msg'=>"Registro atualizado com sucesso!",
