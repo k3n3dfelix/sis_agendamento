@@ -106,6 +106,7 @@ class AgendaController extends Controller
         $agendas = DB::table('agendas')
         ->join('usuarios', 'agendas.usuario_id', '=', 'usuarios.id_usuario')
         ->join('aulas', 'agendas.aula_id', '=', 'aulas.id_aula')
+        ->where('id_usuario', $id_usuario)
         ->paginate(100);
         return view('agenda.indexaluno',compact('agendas'));
     }
